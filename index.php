@@ -8,16 +8,18 @@
 <body>
 
 <input type="text" style="width:500px" name="expr">
-<textarea name="string" cols="120" rows="7"></textarea>
 <button id="count" style="width: 100px">Рассчитать</button>
+<br>
+<textarea name="string" style="width:500px" rows="7"></textarea><br>
+<pre id="result"></pre>
 
 <script>
     $(function () {
         function calc() {
             var expr = $('[name="expr"]').val();
             var string = $('[name="string"]').val();
-            $.post('tester.php', {expr: expr, string: string}, function () {
-                
+            $.post('tester.php', {expr: expr, string: string}, function (text) {
+                $("#result").text(text);
             }, 'text');
         }
 
